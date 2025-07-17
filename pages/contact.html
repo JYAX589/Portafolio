@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../styles/index_styles.css" />
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/index.html">
+                    Inicio
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Mas
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="about.html">
+                            Habilidades
+                        </a>
+                        <a class="navbar-item" href="projects.html">
+                            Proyectos
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section is-medium">
+        <div class="container">
+            <h1 class="title is-2 has-text-centered mb-6">Contáctame</h1>
+            <p class="subtitle is-5 has-text-centered mb-6">
+                ¿Tienes un proyecto en mente, una pregunta o simplemente quieres saludar? ¡No dudes en contactarme!
+            </p>
+            <div class="columns is-centered">
+                <div class="column is-one-third-desktop is-full-tablet">
+                    <div class="box p-5 has-text-centered">
+                        <h2 class="title is-4 mb-4">Información de Contacto</h2>
+                        <p class="mb-4">Estoy disponible para nuevos proyectos y colaboraciones. Si deseas conversar o
+                            tienes alguna consulta, puedes contactarme directamente.</p>
+
+                        <p class="mb-3 is-size-5">
+                            <span class="icon-text has-text-info">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span><a href="mailto:tucorreo@ejemplo.com"
+                                        class="has-text-info">yaxjosue335@gmail.com</a></span>
+                            </span>
+                        </p>
+                        <p class="mb-5 is-size-5">
+                            <span class="icon-text has-text-success">
+                                <span class="icon is-medium">
+                                    <i class="fas fa-phone-alt"></i>
+                                </span>
+                                <span><a href="tel:+50212345678" class="has-text-success">+502 4191-9691</a></span> </span>
+                        </p>
+
+                        <h3 class="title is-5 mb-4">Conéctate en Redes</h3>
+                        <div class="buttons is-centered">
+                            <a class="button is-large is-rounded is-info" href="https://linkedin.com/in/tunombredeusuario"
+                                target="_blank" aria-label="LinkedIn">
+                                <span class="icon">
+                                    <i class="fab fa-linkedin-in fa-lg"></i>
+                                </span>
+                            </a>
+                            <a class="button is-large is-rounded is-dark" href="https://github.com/tuusuario"
+                                target="_blank" aria-label="GitHub">
+                                <span class="icon">
+                                    <i class="fab fa-github fa-lg"></i>
+                                </span>
+                            </a>
+                            <a class="button is-large is-rounded is-primary" href="https://twitter.com/tuusuario"
+                                target="_blank" aria-label="Twitter">
+                                <span class="icon">
+                                    <i class="fab fa-twitter fa-lg"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer has-background-dark has-text-light">
+        <div class="content has-text-centered">
+            <p>
+                &copy; 2025 <strong class="has-text-primary">Josue</strong>. Todos los derechos reservados.
+            </p>
+            <div class="social-links mt-3">
+                <a href="#" target="_blank" class="has-text-light mr-3"><span class="icon is-medium"><i
+                            class="fab fa-linkedin fa-lg"></i></span></a>
+                <a href="#" target="_blank" class="has-text-light mr-3"><span class="icon is-medium"><i
+                            class="fab fa-github fa-lg"></i></span></a>
+                <a href="#" target="_blank" class="has-text-light"><span class="icon is-medium"><i
+                            class="fab fa-twitter fa-lg"></i></span></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica para el menú hamburguesa
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
