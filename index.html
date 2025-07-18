@@ -1,32 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio</title>
+    <title>Josué - Desarrollador Web</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./styles/index_styles.css" />
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* Animaciones y efectos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hero con gradiente */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,200 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            margin-bottom: 2rem;
+        }
+
+        /* Secciones */
+        .section-padding {
+            padding: 4rem 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-logo {
+            width: 60px;
+            height: 60px;
+            margin: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Animaciones de scroll */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div id="navbarBasicExample" class="navbar-menu is-active">
             <div class="navbar-start">
-
+                <a class="navbar-item" href="./pages/Sobre_mi.html">
+                    Sobre mi
+                </a>
                 <a class="navbar-item" href="./pages/projects.html">
                     Proyectos
                 </a>
-
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Mas
                     </a>
-
                     <div class="navbar-dropdown">
                         <a class="navbar-item" href="./pages/about.html">
                             Habilidades
@@ -39,48 +210,211 @@
             </div>
         </div>
     </nav>
-    <section class="hero is-fullheight is-dark is-bold">
+
+    <!-- Hero Section Mejorado -->
+    <section id="home" class="hero is-fullheight hero-gradient">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title is-1 is-spaced">Hola, soy Josue</p>
-                <p class="subtitle is-3">Diseñador Web | Desarrollador Backend</p>
-                <p class="subtitle is-5">
-                    Soy un desarrollador web y diseñador frontend apasionado por la tecnología y la innovación.
-                    Mi enfoque es crear soluciones eficientes y creativas que no solo resuelvan problemas,
-                    sino que también mejoren significativamente la experiencia del usuario. Estoy siempre
-                    en busca de nuevos retos que impulsen mi crecimiento profesional.
-                </p>
-                <div class="mt-5">
-                    <a id="projects-button" class="button is-primary is-large" href="./images/Desarrollo de apis jyax.pdf" download>
-                        Descargar CV
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-6 hero-content">
+                        <div class="fade-in-left">
+                            <h1 class="title is-1 has-text-white mb-4">
+                                Hola, soy <span class="has-text-warning">Josué</span>
+                            </h1>
+                            <h2 class="subtitle is-3 has-text-white-bis mb-4">
+                                "Código limpio, soluciones elegantes."
+                            </h2>
+                            <p class="subtitle is-5 has-text-white-ter mb-5">
+                                Desarrollador web y diseñador frontend apasionado por la tecnología y la innovación.
+                                Creo soluciones eficientes que mejoran significativamente la experiencia del usuario.
+                            </p>
+                            <div class="buttons">
+                                <a class="button is-warning is-large btn-glow" href="./images/Desarrollo de apis jyax.pdf" download>
+                                    <span class="icon"><i class="fas fa-download"></i></span>
+                                    <span>Descargar CV</span>
+                                </a>
+                                <a class="button is-light is-large is-outlined" href="#servicios">
+                                    <span class="icon"><i class="fas fa-arrow-down"></i></span>
+                                    <span>Ver Más</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <div class="fade-in-right">
+                            <img class="profile-image float-animation" src="https://via.placeholder.com/200x200/4a90e2/ffffff?text=J" alt="Josué">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats-section section-padding">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-3">
+                    <div class="stat-card scroll-fade">
+                        <div class="stat-number">25+</div>
+                        <p class="subtitle is-5">Proyectos Completados</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-card scroll-fade">
+                        <div class="stat-number">3+</div>
+                        <p class="subtitle is-5">Años de Experiencia</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-card scroll-fade">
+                        <div class="stat-number">100%</div>
+                        <p class="subtitle is-5">Clientes Satisfechos</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-card scroll-fade">
+                        <div class="stat-number">24/7</div>
+                        <p class="subtitle is-5">Soporte Disponible</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section section-padding has-background-light">
+        <div class="container">
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2 scroll-fade">Mis Servicios</h2>
+                <p class="subtitle is-4 scroll-fade">Ofrezco soluciones completas para tus necesidades digitales</p>
+            </div>
+            <div class="columns is-multiline">
+                <div class="column is-4">
+                    <div class="service-card scroll-fade">
+                        <div class="has-text-centered">
+                            <i class="fas fa-code service-icon has-text-primary"></i>
+                            <h3 class="title is-4">Desarrollo Web</h3>
+                            <p>Sitios web modernos y responsivos utilizando las últimas tecnologías como React, Vue.js y Node.js.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="service-card scroll-fade">
+                        <div class="has-text-centered">
+                            <i class="fas fa-mobile-alt service-icon has-text-info"></i>
+                            <h3 class="title is-4">Diseño Responsivo</h3>
+                            <p>Interfaces que se adaptan perfectamente a cualquier dispositivo, garantizando una experiencia óptima.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="service-card scroll-fade">
+                        <div class="has-text-centered">
+                            <i class="fas fa-database service-icon has-text-success"></i>
+                            <h3 class="title is-4">APIs & Backend</h3>
+                            <p>Desarrollo de APIs robustas y sistemas backend escalables para aplicaciones web complejas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2 scroll-fade">Tecnologías que Uso</h2>
+                <p class="subtitle is-4 scroll-fade">Herramientas modernas para crear soluciones innovadoras</p>
+            </div>
+            <div class="has-text-centered">
+                <div class="scroll-fade">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                    <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+        <div class="container">
+            <div class="has-text-centered">
+                <h2 class="title is-2 has-text-white scroll-fade">¿Tienes un proyecto en mente?</h2>
+                <p class="subtitle is-4 has-text-white-bis scroll-fade">Trabajemos juntos para hacer realidad tu visión digital</p>
+                <div class="scroll-fade">
+                    <a class="button is-warning is-large btn-glow mr-4" href="./pages/contact.html">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span>Contáctame</span>
+                    </a>
+                    <a class="button is-light is-large is-outlined" href="./pages/projects.html">
+                        <span class="icon"><i class="fas fa-eye"></i></span>
+                        <span>Ver Proyectos</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer has-background-dark has-text-light">
-      <div class="content has-text-centered">
-        <p>
-          &copy; 2025 <strong class="has-text-primary">Josue</strong>. Todos los
-          derechos reservados.
-        </p>
-        <div class="social-links mt-3">
-          <a href="#" target="_blank" class="has-text-light mr-3"
-            ><span class="icon is-medium"
-              ><i class="fab fa-linkedin fa-lg"></i></span
-          ></a>
-          <a href="#" target="_blank" class="has-text-light mr-3"
-            ><span class="icon is-medium"
-              ><i class="fab fa-github fa-lg"></i></span
-          ></a>
-          <a href="#" target="_blank" class="has-text-light"
-            ><span class="icon is-medium"
-              ><i class="fab fa-twitter fa-lg"></i></span
-          ></a>
+        <div class="content has-text-centered">
+            <p class="mb-4">
+                &copy; 2025 <strong class="has-text-primary">Josué</strong>. Todos los derechos reservados.
+            </p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/josue-yax-6b3294332" target="_blank" class="button is-primary is-rounded mr-3">
+                    <span class="icon"><i class="fab fa-linkedin"></i></span>
+                </a>
+                <a href="https://github.com/JYAX589" target="_blank" class="button is-dark is-rounded mr-3">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                </a>
+                <a href="https://www.instagram.com/au_josu3/" target="_blank" class="button is-danger is-rounded">
+                    <span class="icon"><i class="fab fa-instagram"></i></span>
+                </a>
+            </div>
         </div>
-      </div>
     </footer>
-</body>
 
+    <script>
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>

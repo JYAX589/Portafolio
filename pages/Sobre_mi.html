@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>Sobre Mí - Josué Yax</title>
+    <style>
+        /* Animaciones y efectos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hero con gradiente */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,200 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            margin-bottom: 2rem;
+        }
+
+        /* Secciones */
+        .section-padding {
+            padding: 4rem 1.5rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 3rem;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .goal-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #3273dc;
+        }
+
+        .goal-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-tag {
+            margin: 0.5rem 0.25rem;
+        }
+
+        .skill-tag .tag {
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+        }
+
+        /* Animaciones de scroll */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sección de stats */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-large {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .content-card {
+                padding: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu is-active">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/index.html">
+                    Inicio
+                </a>
+                <a class="navbar-item" href="../pages/projects.html">
+                    Proyectos
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Mas
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="../pages/about.html">
+                            Habilidades
+                        </a>
+                        <a class="navbar-item" href="../pages/contact.html">
+                            Contacto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-gradient is-medium">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-4 has-text-centered">
+                        <div class="hero-content fade-in-left">
+                            <img class="profile-image float-animation" src="https://via.placeholder.com/180x180/4a90e2/ffffff?text=JY" alt="Josué Yax">
+                        </div>
+                    </div>
+                    <div class="column is-8">
+                        <div class="hero-content fade-in-right">
+                            <h1 class="title is-1 has-text-white mb-4">
+                                Josué <span class="has-text-warning">Yax</span>
+                            </h1>
+                            <h2 class="subtitle is-3 has-text-white-bis mb-4">
+                                Desarrollador Web Full Stack
+                            </h2>
+                            <p class="subtitle is-5 has-text-white-ter">
+                                Apasionado por crear experiencias digitales excepcionales.
+                                Me especializo en desarrollo web moderno y diseño limpio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section section-padding">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-3">
+                    <div class="stat-item scroll-fade">
+                        <div class="stat-number">19</div>
+                        <p class="subtitle is-5">Años de Edad</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-item scroll-fade">
+                        <div class="stat-number">3+</div>
+                        <p class="subtitle is-5">Años Programando</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-item scroll-fade">
+                        <div class="stat-number">100%</div>
+                        <p class="subtitle is-5">Dedicación</p>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="stat-item scroll-fade">
+                        <div class="stat-number">∞</div>
+                        <p class="subtitle is-5">Ganas de Aprender</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí Section -->
+    <section class="section section-padding has-background-light">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-10">
+                    <div class="content-card scroll-fade">
+                        <div class="has-text-centered mb-5">
+                            <i class="fas fa-user icon-large has-text-primary"></i>
+                            <h2 class="title is-2">Sobre Mí</h2>
+                        </div>
+                        <div class="columns">
+                            <div class="column is-6">
+                                <p class="is-size-5 mb-4">
+                                    A mis <strong>19 años</strong>, me considero una persona curiosa y proactiva, siempre en busca de nuevas
+                                    experiencias y conocimientos. Llevo <strong>tres años</strong> inmerso en el mundo del desarrollo, una pasión
+                                    que me impulsa a enfrentar desafíos y aprender constantemente.
+                                </p>
+                                <p class="is-size-5">
+                                    Valoro enormemente el <strong>trabajo en equipo</strong>, creyendo que la colaboración y el intercambio de ideas 
+                                    son clave para alcanzar grandes metas. Soy alguien que presta mucha atención a los detalles, 
+                                    siempre buscando la excelencia.
+                                </p>
+                            </div>
+                            <div class="column is-6">
+                                <p class="is-size-5 mb-4">
+                                    Más allá del código, disfruto de una buena lectura que me transporte a otros mundos. 
+                                    Me encanta <strong>viajar y explorar</strong>, descubriendo diferentes culturas y perspectivas 
+                                    que enriquecen mi visión del mundo.
+                                </p>
+                                <p class="is-size-5">
+                                    Soy un firme creyente en que la <strong>tecnología debe ser accesible</strong> y útil para todos, 
+                                    y me entusiasma pensar en cómo puedo contribuir a ese objetivo mientras sigo creciendo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencias Section -->
+    <section class="section section-padding">
+        <div class="container">
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2 scroll-fade">
+                    <i class="fas fa-briefcase has-text-primary mr-3"></i>
+                    Mi Experiencia
+                </h2>
+                <p class="subtitle is-4 scroll-fade">Camino profesional y aprendizaje constante</p>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="experience-card scroll-fade">
+                        <div class="columns is-vcentered">
+                            <div class="column is-8">
+                                <h3 class="title is-4 has-text-white">Desarrollador Full Stack</h3>
+                                <p class="subtitle is-6 has-text-white-bis">Frontend & Backend Development</p>
+                                <p class="has-text-white-ter">
+                                    Especializado en crear aplicaciones web modernas y funcionales, 
+                                    desde la interfaz de usuario hasta la lógica del servidor.
+                                </p>
+                            </div>
+                            <div class="column is-4 has-text-centered">
+                                <i class="fas fa-code has-text-white" style="font-size: 4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card scroll-fade" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="columns is-vcentered">
+                            <div class="column is-8">
+                                <h3 class="title is-4 has-text-white">Vendedor</h3>
+                                <p class="subtitle is-6 has-text-white-bis">Artículos y Ropa</p>
+                                <p class="has-text-white-ter">
+                                    Experiencia en atención al cliente y ventas, desarrollando 
+                                    habilidades de comunicación y trabajo bajo presión.
+                                </p>
+                            </div>
+                            <div class="column is-4 has-text-centered">
+                                <i class="fas fa-store has-text-white" style="font-size: 4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metas Section -->
+    <section class="section section-padding has-background-light">
+        <div class="container">
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2 scroll-fade">
+                    <i class="fas fa-target has-text-success mr-3"></i>
+                    Mis Metas
+                </h2>
+                <p class="subtitle is-4 scroll-fade">Objetivos que me impulsan hacia el futuro</p>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="goal-card scroll-fade">
+                        <div class="columns is-vcentered">
+                            <div class="column is-2 has-text-centered">
+                                <i class="fas fa-graduation-cap has-text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <div class="column is-10">
+                                <h3 class="title is-5 mb-2">Graduarme de Kinal</h3>
+                                <p class="has-text-grey-dark">Completar mi formación académica con excelencia y obtener las bases sólidas para mi carrera profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-card scroll-fade" style="border-left-color: #00d1b2;">
+                        <div class="columns is-vcentered">
+                            <div class="column is-2 has-text-centered">
+                                <i class="fas fa-laptop-code has-text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <div class="column is-10">
+                                <h3 class="title is-5 mb-2">Conseguir Trabajo</h3>
+                                <p class="has-text-grey-dark">Encontrar una oportunidad laboral donde pueda aplicar mis conocimientos y seguir aprendiendo en un ambiente profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-card scroll-fade" style="border-left-color: #ffdd57;">
+                        <div class="columns is-vcentered">
+                            <div class="column is-2 has-text-centered">
+                                <i class="fas fa-tools has-text-warning" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <div class="column is-10">
+                                <h3 class="title is-5 mb-2">Adquirir Nuevos Conocimientos Técnicos</h3>
+                                <p class="has-text-grey-dark">Mantenerme actualizado con las últimas tecnologías y tendencias del desarrollo web para ser más competitivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-card scroll-fade" style="border-left-color: #ff3860;">
+                        <div class="columns is-vcentered">
+                            <div class="column is-2 has-text-centered">
+                                <i class="fas fa-chart-line has-text-danger" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <div class="column is-10">
+                                <h3 class="title is-5 mb-2">Aprender Nuevas Habilidades Constantemente</h3>
+                                <p class="has-text-grey-dark">Desarrollar el hábito de aprender algo nuevo regularmente, tanto en lo técnico como en lo personal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer has-background-dark has-text-light">
+        <div class="content has-text-centered">
+            <p class="mb-4">
+                &copy; 2025 <strong class="has-text-primary">Josué Yax</strong>. Todos los derechos reservados.
+            </p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/josue-yax-6b3294332" target="_blank" class="button is-primary is-rounded mr-3">
+                    <span class="icon"><i class="fab fa-linkedin"></i></span>
+                </a>
+                <a href="https://github.com/JYAX589" target="_blank" class="button is-dark is-rounded mr-3">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                </a>
+                <a href="https://www.instagram.com/au_josu3/" target="_blank" class="button is-danger is-rounded">
+                    <span class="icon"><i class="fab fa-instagram"></i></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
